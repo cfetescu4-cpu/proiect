@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Proiect – Variabilitate și Mutații</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --accent:#2b6cb0; --text:#222;
+    --muted:#666; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  html,body{height:100%; margin:0; background:linear-gradient(180deg,#eef2fb 0,#f6f7fb 100%);}
+  .wrap{height:100%; display:flex; align-items:center; justify-content:center; padding:32px;}
+  .slides{
+    width:min(1100px,98vw); height:min(650px,86vh);
+    position:relative; overflow:hidden; border-radius:14px; box-shadow:0 18px 40px rgba(12,20,40,.12);
+    background:var(--card);
+  }
+  .slide{
+    width:100%; height:100%; position:absolute; top:0; left:100%; padding:40px 56px; box-sizing:border-box;
+    transition:all .45s ease;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .slide.visible{ left:0; }
+  .slide.left{ left:-100%; }
+  h1{margin:0; font-size:28px; color:var(--accent);}
+  h2{margin:0; font-size:20px; color:var(--text);}
+  p{margin:0; line-height:1.45; color:var(--muted);}
+  ul{margin:8px 0 0 18px; color:var(--text);}
+  .meta{font-size:13px; color:var(--muted);}
+  .footer{margin-top:auto; display:flex; justify-content:space-between; align-items:center;}
+  .nav{display:flex; gap:8px; align-items:center;}
+  button.navbtn{
+    border:0; background:var(--accent); color:white; padding:10px 14px; border-radius:8px; cursor:pointer;
+    box-shadow:0 6px 16px rgba(43,108,176,.18);
+  }
+  .dots{display:flex; gap:6px; align-items:center;}
+  .dot{width:10px;height:10px;border-radius:50%;background:#ddd;}
+  .dot.active{background:var(--accent);}
+  /* responsive */
+  @media (max-width:700px){
+    .slides{height:86vh;padding:0}
+    .slide{padding:22px;}
+    h1{font-size:20px}
+  }
+  /* small decorative */
+  .box{padding:14px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff); box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="slides" id="slides">
+    <!-- Slide 1 -->
+    <section class="slide visible" data-index="0">
+      <h1>Variabilitatea neereditară și ereditară a organismelor</h1>
+      <h2>Mutațiile și semnificația lor</h2>
+      <div class="box">
+        <p class="meta"><strong>Introducere</strong></p>
+        <p>Variabilitatea = capacitatea indivizilor de a dobândi caractere noi sub acțiunea factorilor de mediu. Poate fi <strong>neereditară</strong> (de mediu) sau <strong>ereditară</strong> (genetică).</p>
+      </div>
+
+      <div style="display:flex;gap:18px;margin-top:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:240px;" class="box">
+          <p class="meta"><strong>Variabilitate neereditară</strong></p>
+          <ul>
+            <li>Nu modifică materialul ereditar.</li>
+            <li>Provine din factori de mediu (hrană, lumină, temperatură).</li>
+            <li>Nu se transmite urmașilor.</li>
+          </ul>
+        </div>
+        <div style="flex:1;min-width:240px;" class="box">
+          <p class="meta"><strong>Variabilitate ereditară</strong></p>
+          <ul>
+            <li>Afectează ADN-ul și cromozomii.</li>
+            <li>Se datorează mutațiilor și recombinărilor.</li>
+            <li>Se transmite urmașilor și are rol evolutiv.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="meta">Slide 1 / 3</div>
+        <div class="nav">
+          <div class="dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
+          <button class="navbtn" onclick="next()">Următor ►</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide" data-index="1">
+      <h2>Mutațiile genice</h2>
+      <div class="box">
+        <p class="meta"><strong>Definiție</strong></p>
+        <p>Mutațiile genice sunt modificări ale structurii unei gene care pot schimba sinteza proteinelor.</p>
+      </div>
+
+      <div style="display:flex;gap:18px;margin-top:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:240px;" class="box">
+          <p class="meta"><strong>Tipuri</strong></p>
+          <ul>
+            <li><strong>Substituții</strong> – înlocuirea unei baze (tranziții/transversii).</li>
+            <li><strong>Deleții</strong> – pierdere de perechi de baze.</li>
+            <li><strong>Adiții</strong> – adăugare de perechi de baze.</li>
+            <li><strong>Duplicații</strong> – dublarea unei porțiuni.</li>
+          </ul>
+        </div>
+
+        <div style="flex:1;min-width:240px;" class="box">
+          <p class="meta"><strong>Mutații cromozomiale</strong></p>
+          <ul>
+            <li>Structurale: deleții, inversii, duplicații, translocații.</li>
+            <li>Numerice: poliploidii (multiplicare set cromozomial), aneuploidii (ex. Down, Turner).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="meta">Slide 2 / 3</div>
+        <div class="nav">
+          <button class="navbtn" onclick="prev()">◄ Anterior</button>
+          <div style="width:8px"></div>
+          <button class="navbtn" onclick="next()">Următor ►</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide" data-index="2">
+      <h2>Originea și semnificația mutațiilor</h2>
+
+      <div class="box">
+        <p class="meta"><strong>Originea</strong></p>
+        <ul>
+          <li><strong>Spontane</strong> — apar natural (radiații, erori de replicare).</li>
+          <li><strong>Induse</strong> — provocate experimental de agenți mutageni.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:12px;" class="box">
+        <p class="meta"><strong>Semnificație evolutivă</strong></p>
+        <ul>
+          <li>Asigură heterogenitatea genetică a populațiilor.</li>
+          <li>Sunt materia primă pentru selecție naturală.</li>
+          <li>Pot fi dăunătoare, neutre sau avantajoase în funcție de context.</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:12px; font-size:13px; color:var(--muted)">
+        <em>Notă:</em> Unele mutații (heterozigote, recesive) nu se manifestă fenotipic dar pot îmbogăți genofondul.
+      </div>
+
+      <div class="footer">
+        <div class="meta">Slide 3 / 3</div>
+        <div class="nav">
+          <button class="navbtn" onclick="prev()">◄ Anterior</button>
+          <div style="width:8px"></div>
+          <div style="display:flex;gap:8px">
+            <button class="navbtn" onclick="printSlides()">Print / Save PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let idx = 0;
+  function show(i){
+    slides.forEach((s, k)=>{
+      s.classList.remove('visible','left');
+      if(k < i) s.classList.add('left');
+      if(k === i) s.classList.add('visible');
+    });
+    idx = i;
+    updateDots();
+  }
+  function next(){ show(Math.min(idx+1, slides.length-1)); }
+  function prev(){ show(Math.max(idx-1, 0)); }
+  function updateDots(){
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((d,i)=> d.classList.toggle('active', i===idx));
+  }
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+  });
+  // print/save pdf
+  function printSlides(){ window.print(); }
+
+  // initialize (ensure dots count)
+  (function initDots(){
+    const dotsWrap = document.querySelector('.dots');
+    if(!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<slides.length;i++){
+      const sp = document.createElement('span');
+      sp.className = 'dot' + (i===0? ' active':'');
+      sp.onclick = ()=> show(i);
+      dotsWrap.appendChild(sp);
+    }
+  })();
+</script>
+</body>
+</html>
